@@ -19,8 +19,12 @@ Hooks.on("createChatMessage", async function (message) {
         const data = DIV.querySelector("[data-action=rollDamage]")?.dataset;
         if (!isAttack || !data) {
           return console.log("CPR Burst Module ======= Either no isAttack or no data" );
-        }
-        const isStandardAttack = message.content.includes(`Attack`);
+        };
+        let isStandardAttack = false
+        //console.log('is autofire? '+ message.content.toLowerCase().includes(`autofire`)); // Uncomment if you want to turn on logs
+        //console.log('is suppressive? '+ message.content.toLowerCase().includes(`suppressive`)); // Uncomment if you want to turn on logs
+        isStandardAttack = !(message.content.toLowerCase().includes(`autofire`) || message.content.toLowerCase().includes('suppressive'));
+        //console.log('is standard attack? ' + isStandardAttack)  // Uncomment if you want to turn on logs
 
         let token =
         message.speaker?.token ||
@@ -44,10 +48,10 @@ Hooks.on("createChatMessage", async function (message) {
           return upgrade.name && upgrade.name.toLowerCase().includes('burst fire 3');
         });
 
-        if (item && foundBurstThree) {
-          console.warn(`Burst Three detected!`);
+        if (item && foundBurstThree && isStandardAttack) {
+          //console.warn(`Burst Three detected!`); // Uncomment if you want to turn on logs
           burstFireThree(item);
-      } else if (item && foundBurstTwo) {
+      } else if (item && foundBurstTwo && isStandardAttack) {
           //console.warn('Burst Two Detected'); // Uncomment if you want to turn on logs
           burstFireTwo(item);
       } else {

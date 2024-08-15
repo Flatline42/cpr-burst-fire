@@ -1,0 +1,41 @@
+{
+  "id": "cpr-burst-fire",
+  "title": "CPR Burst Fire",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "scripts":[
+    "./scripts/BurstHook.js"
+ ],
+  "packs": [
+    {
+      "name": "burst-fire-macros",
+      "label": "Burst Fire Macros",
+      "path": "packs/burst-fire-macros",
+      "type": "Macro",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "cyberpunk-red-core",
+      "flags": {}
+    },
+    {
+      "name": "burst-fire-items",
+      "label": "Burst Fire Items",
+      "path": "packs/burst-fire-items",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "cyberpunk-red-core",
+      "flags": {}
+    }
+  ]
+}

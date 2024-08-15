@@ -11,10 +11,20 @@
 <p>&nbsp;</p>
 <p>Installation:</p>
 <ul>
-    <li>Install the module as normal. You will see a compendium with 2 items in it. These items are upgrades and any projectile you install them in will become a burst fire weapon. </li>
+    <li>Install the module as normal. You will see a compendium with 2 items in it. These items are upgrades and any projectile you install them in will become a burst fire weapon.</li>
     <li>No other configuration needed. Burst Fire only works in Aimed and Standard attacks. Suppressive and Autofire work RAW.&nbsp;</li>
 </ul>
 <p>&nbsp;</p>
 <p>This should cause little to no issues but as always you may wish to back your world up before installing.&nbsp;</p>
+<p>&nbsp;</p>
+<p>Additionally used icons from&nbsp;<br><a target="_blank" rel="nofollow noopener" href="https://game-icons.net"><a target="_blank" rel="noopener noreferrer">https://game-icons.net</a></a><br>License: CC BY 3.0<br><a target="_blank" rel="nofollow noopener" href="https://creativecommons.org/licenses/by/3.0/"><a target="_blank" rel="noopener noreferrer">https://creativecommons.org/licenses/by/3.0/</a></a></p>
+<p>&nbsp;</p>
+<p>Compendium art is a derivative from</p>
+<p><a target="_blank" rel="nofollow noopener" href="https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/blob/master/LICENCE.md"><a target="_blank" rel="noopener noreferrer">Foundry VTT Cyberpunk Red system under GPLv3.0</a></a></p>
+<p>&nbsp;</p>
+<p>Cyberpunk Red is a product of</p>
+<p>R Talsorian Games</p>
+<p><a target="_blank" rel="nofollow noopener" href="https://rtalsoriangames.com/"><a target="_blank" rel="noopener noreferrer">https://rtalsoriangames.com/</a></a></p>
+<p><a target="_blank" rel="nofollow noopener" href="https://rtalsoriangames.com/cyberpunk/"><a target="_blank" rel="noopener noreferrer">https://rtalsoriangames.com/cyberpunk/</a></a></p>
 <p>&nbsp;</p>
 <p><i>“Burst Fire Mode is unofficial content provided under the Homebrew Content Policy of R. Talsorian Games and is not approved or endorsed by RTG. This content references materials that are the property of R. Talsorian Games and its licensees.”</i></p>

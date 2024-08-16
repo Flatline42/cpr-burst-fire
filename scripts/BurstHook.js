@@ -1,3 +1,5 @@
+//v1.1.0 BurstFlex system. It will extract an integer from the first upgrade called "Burst Fire #" and use it to calculate the burst. Much more flexible.
+
 // Create Initialization Message
 Hooks.once("ready", () => {console.info("🎯 ▪💨 ▪💨 ▪💨 🔫 Burst Fire Module Script Loaded");
 });
@@ -40,35 +42,34 @@ Hooks.on("createChatMessage", async function (message) {
         return;
       }
 
-      const foundBurstTwo = !!item.system.upgrades.find(upgrade => {
-          return upgrade.name && upgrade.name.toLowerCase().includes('burst fire 2');
-        });
+      const upgrades = item.system.upgrades; 
+      const burstFireUpgrade = upgrades.find(upgrade => upgrade.name && upgrade.name.toLowerCase().includes('burst fire')); //Looking for Burst Fire # mod
 
-      const foundBurstThree = !!item.system.upgrades.find(upgrade => {
-          return upgrade.name && upgrade.name.toLowerCase().includes('burst fire 3');
-        });
-
-        if (item && foundBurstThree && isStandardAttack) {
-          //console.warn(`Burst Three detected!`); // Uncomment if you want to turn on logs
-          burstFireThree(item);
-      } else if (item && foundBurstTwo && isStandardAttack) {
-          //console.warn('Burst Two Detected'); // Uncomment if you want to turn on logs
-          burstFireTwo(item);
-      } else {
-          return //console.log('No Burst Mod Detected') // Uncomment if you want to turn on logs
-
+      // Extract the name using destructuring
+      const burstFireFlexible = burstFireUpgrade?.name; // Optional chaining to handle cases where no upgrade is found
+      
+      
+      if (!upgrades || !burstFireUpgrade || !burstFireFlexible) { //Let's check to see if any of that errored out and where it errored out
+      console.log(`Upgrades missing: ${!upgrades} | burstFireUpgrade: ${!burstFireUpgrade} | burstFireFlexible: ${!burstFireFlexible}`);
+      return;
       }
-});
+
+      //BurstFlex(tm) Calulating the integer inside of a Burst Mod # upgrade and storing that as an integer
+
+      const match = burstFireFlexible.match(/\d+/);
+      let burstInteger = match ? parseInt(match[0]) : null;
+      //console.log('Burst Fire Mod Amount ' + burstInteger); //Uncomment for logging
+      if (!Number.isInteger(burstInteger)) {
+        console.log('Burst Fire mod has no integer in its name try again');
+        return;
+      };
+
+      burstInteger = burstInteger - 1; //This modifies a standard or aimed attack so we need to account for the system firing that bullet. 
 
 
-
-
-
-// Burst Fire 2
-async function burstFireTwo(item) {
-        let ammoCount = item.system.magazine.value;
-        let ammoRemaining = ammoCount - 1;
-        if (ammoRemaining < 0) {
+      let ammoCount = item.system.magazine.value; 
+        ammoCount = ammoCount - burstInteger;
+        if (ammoCount < 0) {
             await item.update({"system.magazine.value":0});
             //ui.notifications.info(`*CLICK* Ran out of ammo mid-burst choom!`); // Uncomment if you want to turn on logs
             const chatData = {
@@ -78,24 +79,7 @@ async function burstFireTwo(item) {
              };
             ChatMessage.create(chatData, {});         
         } else {
-        await item.update({"system.magazine.value":ammoRemaining});
+        await item.update({"system.magazine.value":ammoCount});
         }
-    }
 
-// Burst Fire 3
-async function burstFireThree(item) {
-    let ammoCount = item.system.magazine.value;
-    let ammoRemaining = ammoCount - 2;
-    if (ammoRemaining <= 0) {
-      await item.update({"system.magazine.value":0}); 
-       //ui.notifications.info(`*CLICK* Ran out of ammo mid-burst choom!`); // Uncomment if you want to turn on logs
-       const chatData = {
-        user: game.user._id,
-        speaker: ChatMessage.getSpeaker(),
-        content: '<p><i><strong>*CLICK*</strong></i> Ran out of ammo mid-burst!</p>',
-        };
-      ChatMessage.create(chatData, {});     
-    } else {
-    await item.update({"system.magazine.value":ammoRemaining});
-    }
-}
+});

@@ -1,7 +1,7 @@
 {
   "id": "cpr-burst-fire",
   "title": "Burst Fire Mode: A Modification for Cyberpunk Red",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "compatibility": {
     "minimum": "11",
     "verified": "11",
@@ -19,17 +19,18 @@
       "sorting": "m",
       "packs": [
         "burst-fire-items"
-      ]
-      }
-    ],
+      ],
+      "folders": []
+    }
+  ],
   "packs": [
     {
       "name": "burst-fire-items",
       "label": "Burst Fire Items",
+      "banner": "modules/cpr-burst-fire/art/compendium-banner-ff7f00.webp",
       "path": "packs/burst-fire-items",
       "type": "Item",
       "system": "cyberpunk-red-core",
-      "banner": "modules/cpr-burst-fire/art/compendium-banner-ff7f00.webp",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -40,7 +41,8 @@
     "systems": [
       {
         "id": "cyberpunk-red-core",
-        "type": "system"
+        "type": "system",
+        "compatibility": {}
       }
     ]
   },
@@ -48,8 +50,8 @@
   "authors": [
     {
       "name": "TheFlatline42",
-      "discord": "theflatline42",
-      "url": "https://github.com/Flatline42"
+      "url": "https://github.com/Flatline42",
+      "discord": "theflatline42"
     },
     {
       "name": "Aru"

@@ -42,9 +42,10 @@ Hooks.on("createChatMessage", async function (message) {
         return;
       }
 
-        if (!item.system.isRanged) {    //Check to see if weapon is ranged. Melee weapons don't need burst fire
-          return;
-        };
+      if (!item.system.isRanged || (item.system.weaponType === 'bow' || item.system.weaponType === 'grenadeLauncher' || 
+        item.system.weaponType === 'rocketLauncher') || item.system.variety === 'grenade') {
+        return; //Check to see if the weapon is ranged, or if the weapon is a grenade or some weapon type that shouldn't use burst fire, then exit out. 
+      }
         
       const upgrades = item.system.upgrades; 
       const burstFireUpgrade = upgrades.find(upgrade => upgrade.name && upgrade.name.toLowerCase().includes('burst fire')); //Looking for Burst Fire # mod

@@ -1,4 +1,4 @@
-//v1.1.0 BurstFlex system. It will extract an integer from the first upgrade called "Burst Fire #" and use it to calculate the burst. Much more flexible.
+//v1.1.1 BurstFlex system. Ranged weapon check + Burst Fire shenanigans check
 
 // Create Initialization Message
 Hooks.once("ready", () => {console.info("🎯 ▪💨 ▪💨 ▪💨 🔫 Burst Fire Module Script Loaded");
@@ -42,6 +42,10 @@ Hooks.on("createChatMessage", async function (message) {
         return;
       }
 
+        if (!item.system.isRanged) {    //Check to see if weapon is ranged. Melee weapons don't need burst fire
+          return;
+        };
+        
       const upgrades = item.system.upgrades; 
       const burstFireUpgrade = upgrades.find(upgrade => upgrade.name && upgrade.name.toLowerCase().includes('burst fire')); //Looking for Burst Fire # mod
 
@@ -65,7 +69,11 @@ Hooks.on("createChatMessage", async function (message) {
       };
 
       burstInteger = burstInteger - 1; //This modifies a standard or aimed attack so we need to account for the system firing that bullet. 
-
+      
+      if (burstInteger < 1) { //Check to see if someone is sneaky and trying to add ammo or use a burst fire 1 mod
+        ui.notifications.info(`Burst fire don't work that way choom, Burst Fire 2 is minimum upgrade`);
+        return;
+      }
 
       let ammoCount = item.system.magazine.value; 
         ammoCount = ammoCount - burstInteger;

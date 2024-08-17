@@ -8,8 +8,8 @@
     "maximum": "11"
   },
   "url": "https://github.com/Flatline42/cpr-burst-fire",
-  "manifest": "https://github.com/Flatline42/cpr-burst-fire/releases/download/v1.1.0/module.json",
-  "download": "https://github.com/Flatline42/cpr-burst-fire/releases/download/v1.1.0/cpr-burst-fire.zip",
+  "manifest": "https://github.com/Flatline42/cpr-burst-fire/releases/download/v1.1.1/module.json",
+  "download": "https://github.com/Flatline42/cpr-burst-fire/releases/download/v1.1.1/cpr-burst-fire.zip",
   "scripts": [
     "scripts/BurstHook.js"
   ],

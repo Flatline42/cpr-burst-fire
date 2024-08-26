@@ -1,15 +1,15 @@
 {
   "id": "cpr-burst-fire",
   "title": "Flatline's Arsenal - Gunpath DLC & Burst Fire for Cyberpunk Red",
-  "version": "2.0.0",
+  "version": "1.2.0",
   "compatibility": {
     "minimum": "11",
     "verified": "11",
     "maximum": "11"
   },
   "url": "https://github.com/Flatline42/cpr-burst-fire",
-  "manifest": "https://github.com/Flatline42/cpr-burst-fire/releases/download/v2.0.0/module.json",
-  "download": "https://github.com/Flatline42/cpr-burst-fire/releases/download/v2.0.0/cpr-burst-fire.zip",
+  "manifest": "https://github.com/Flatline42/cpr-burst-fire/releases/download/v1.2.0/module.json",
+  "download": "https://github.com/Flatline42/cpr-burst-fire/releases/download/v1.2.0/cpr-burst-fire.zip",
   "scripts": [
     "scripts/BurstHook.js"
   ],
@@ -21,16 +21,7 @@
         "burst-fire-items"
       ],
       "folders": []
-    },
-    {
-      "name": "Cyberpunk Red: Gunpath",
-      "sorting": "m",
-      "packs": [
-        "gunpath-items",
-        "gunpath-macros",
-        "gunpath-rolltables"
-      ]
-    }
+    }    
   ],
   "packs": [
     {
@@ -44,42 +35,6 @@
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
       }
-    },
-    {
-      "name": "gunpath-items",
-      "label": "Gunpath Items",
-      "banner": "modules/cpr-burst-fire/art/compendium-banner-0000ff.webp",
-      "path": "packs/gunpath-items",
-      "type": "Item",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "cyberpunk-red-core"
-    },
-    {
-      "name": "gunpath-macros",
-      "label": "Gunpath Macros",
-      "banner": "modules/cpr-burst-fire/art/compendium-banner-0000ff.webp",
-      "path": "packs/gunpath-macros",
-      "type": "Macro",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "cyberpunk-red-core"
-    },
-    {
-      "name": "gunpath-rolltables",
-      "label": "Gunpath Rolltables",
-      "banner": "modules/cpr-burst-fire/art/compendium-banner-0000ff.webp",
-      "path": "packs/gunpath-rolltables",
-      "type": "JournalEntry",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "cyberpunk-red-core"
     }
   ],
   "relationships": {

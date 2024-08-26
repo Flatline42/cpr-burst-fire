@@ -27,6 +27,10 @@ Hooks.on("createChatMessage", async function (message) {
         //console.log('is suppressive? '+ message.content.toLowerCase().includes(`suppressive`)); // Uncomment if you want to turn on logs
         isStandardAttack = !(message.content.toLowerCase().includes(`autofire`) || message.content.toLowerCase().includes('suppressive'));
         //console.log('is standard attack? ' + isStandardAttack)  // Uncomment if you want to turn on logs
+        if (!isStandardAttack) { // Anything other than normal or aimed attack ends the script.
+          //console.log(`CPR Burst Module ======== Isn't a Standard Attack`); // Uncomment to turn on logs
+          return;
+        };
 
         let token =
         message.speaker?.token ||

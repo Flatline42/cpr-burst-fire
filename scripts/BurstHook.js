@@ -43,10 +43,12 @@ Hooks.on("createChatMessage", async function (message) {
     return;
   }
 
-  
-  const actor = game.actors.get(data.actorId);
+  let token =
+    message.speaker?.token ||
+    canvas.scene.tokens.get(data.tokenId) ||
+    canvas.scene.tokens.getName(message.speaker?.alias);
+  const actor = token?.actor ?? game.actors.get(data.actorId);
   const item = actor?.items?.get(data.itemId);
-
 
   // console.log("BurstHook: token:", token);
   // console.log("BurstHook: actor:", actor);

@@ -1,5 +1,5 @@
 Hooks.once("ready", () => {
-  console.info("🎯 Burst Fire Module Script Loaded (v12, debug mode)");
+  console.info("🎯 Burst Fire Module Script Loaded (v12)");
  });
 
 Hooks.on("createChatMessage", async function (message) {
@@ -31,6 +31,7 @@ Hooks.on("createChatMessage", async function (message) {
     return;
   }
 
+  // "Standard attack" is defined as anything that is NOT autofire or suppressive for future-proofing
   const isStandardAttack = !(
     message.content.toLowerCase().includes("autofire") ||
     message.content.toLowerCase().includes("suppressive")
@@ -44,9 +45,9 @@ Hooks.on("createChatMessage", async function (message) {
   }
 
   let token =
-    message.speaker?.token ||
-    canvas.scene.tokens.get(data.tokenId) ||
-    canvas.scene.tokens.getName(message.speaker?.alias);
+    canvas.scene?.tokens?.get(message.speaker?.token) ||
+    canvas.scene?.tokens?.get(data.tokenId) ||
+    canvas.scene?.tokens?.getName(message.speaker?.alias);
   const actor = token?.actor ?? game.actors.get(data.actorId);
   const item = actor?.items?.get(data.itemId);
 
@@ -56,11 +57,11 @@ Hooks.on("createChatMessage", async function (message) {
   // console.log("BurstHook: item.system:", item.system);
   // Uncomment above to log the token, actor, item, and item system data
 
-  if (!token || !actor || !item) {
-     console.log(
-       `BurstHook: Token missing: ${!token}\nActor missing: ${!actor}\nItem missing: ${!item}`
-     );
-    // Uncomment above to log if any of the token, actor, or item is missing
+  if (!actor || !item) {
+    console.log(
+      `BurstHook: Actor missing: ${!actor}\nItem missing: ${!item}`
+    );
+    // Uncomment above to log if the actor or item is missing
     return;
   }
 
@@ -120,7 +121,7 @@ Hooks.on("createChatMessage", async function (message) {
     // Uncomment above to log if the burst fire mod name is invalid
     return;
   }
-  burstInteger = burstInteger - 1;
+  burstInteger = burstInteger - 1; // Compensates for the 1 round already deducted by the CPR system when the attack roll fires
   // console.log("BurstHook: burstInteger after subtracting 1:", burstInteger);
   // Uncomment above to log the adjusted burst integer
 

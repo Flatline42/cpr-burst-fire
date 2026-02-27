@@ -1,0 +1,45 @@
+# GitHub Actions - Automated Release Workflow
+# For a no-build Foundry VTT module (plain JS, no npm/webpack)
+#
+# SETUP:
+# 1. Save this file to: .github/workflows/release.yml in your repo
+# 2. Edit the "files" list under the zip step to match your module's actual files/folders
+# 3. Edit the module-id in the zip filename to match your module's id in module.json
+# 4. That's it — no secrets or special configuration needed for public repos
+#
+# HOW TO TRIGGER A RELEASE:
+#   git tag v1.2.0
+#   git push origin main --tags
+# GitHub Actions will then automatically zip, create the release, and attach assets.
+#
+# ─────────────────────────────────────────────────────────────
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create Module Zip
+        run: |
+          zip -r ./cpr-burst-fire.zip \
+            module.json \
+            scripts/ \
+            packs/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            cpr-burst-fire.zip
+            module.json
+          generate_release_notes: true

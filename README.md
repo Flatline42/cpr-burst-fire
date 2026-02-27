@@ -5,9 +5,8 @@
 <p>&nbsp;</p>
 <p>Requirements:</p>
 <ul>
-    <li>Burst Fire Mode 1.3.0 is compatible with Foundry V12. V11 compatibility has been dropped. For v11 compatibility please use v1.2.0 version</li>
+    <li>Burst Fire Mode 1.3.2 is compatible with Foundry V12. V11 compatibility has been dropped. For v11 compatibility please use v1.2.0 version</li>
     <li>Cyberpunk Red Core System v0.92 or later. </li>
-    <li>Burst Fire requires a token to be on the canvas and be selected to work.&nbsp;</li>
 </ul>
 <p>&nbsp;</p>
 <p>Installation:</p>
